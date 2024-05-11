@@ -22,9 +22,10 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.title || !formData.rating) return;
-
+  
     setReviews([...reviews, formData]);
     setFormData({ title: "", rating: 0, description: "" });
+    window.alert("Thanks for your valuable ratings");
   };
 
   const handleDelete = (index) => {
