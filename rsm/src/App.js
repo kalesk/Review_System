@@ -2,12 +2,11 @@ import "./App.css";
 import React, { useState } from "react";
 import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
 
-
 function App() {
   const [formData, setFormData] = useState({
     title: "",
     rating: 0,
-    description: ""
+    description: "",
   });
   const [reviews, setReviews] = useState([]);
 
@@ -57,9 +56,15 @@ function App() {
                 {[...Array(5)].map((_, i) => (
                   <i
                     key={i}
-                    className={`fas fa-star ${formData.rating > i ? "text-warning" : "text-light"}`}
+                    className={`fas fa-star ${
+                      formData.rating > i ? "text-warning" : "text-light"
+                    }`}
                     onClick={() => handleStarClick(i + 1)}
-                    style={{ cursor: "pointer", marginRight: "2px", fontSize: "35px" }}
+                    style={{
+                      cursor: "pointer",
+                      marginRight: "2px",
+                      fontSize: "35px",
+                    }}
                   ></i>
                 ))}
               </Form.Group>
@@ -76,10 +81,19 @@ function App() {
                 />
               </Form.Group>
               <div style={{ marginBottom: "15px" }}>
-                <Button className="btn btn-warning mx-3" onClick={() => setFormData({ title: "", rating: 0, description: "" })}>
+                <Button
+                  className="btn btn-warning mx-3"
+                  onClick={() =>
+                    setFormData({ title: "", rating: 0, description: "" })
+                  }
+                >
                   Reset
                 </Button>
-                <Button className="btn btn-success" type="submit" disabled={!formData.title || !formData.rating}>
+                <Button
+                  className="btn btn-success"
+                  type="submit"
+                  disabled={!formData.title || !formData.rating}
+                >
                   Submit
                 </Button>
               </div>
@@ -93,12 +107,19 @@ function App() {
                 <Card.Body>
                   <h5>{review.title}</h5>
                   {[...Array(review.rating)].map((_, i) => (
-                    <i key={i} className="fas fa-star text-warning" style={{ marginRight: "2px" }}></i>
+                    <i
+                      key={i}
+                      className="fas fa-star text-warning"
+                      style={{ marginRight: "2px" }}
+                    ></i>
                   ))}
                   <p className="text-dark">{review.description}</p>
                 </Card.Body>
                 <Card.Footer>
-                  <Button className="btn btn-danger" onClick={() => handleDelete(index)}>
+                  <Button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(index)}
+                  >
                     Delete
                   </Button>
                 </Card.Footer>
